@@ -5,6 +5,9 @@ on:
     tags:
       - 'v*.*.*'   # 例: v0.1.0 で発火
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
