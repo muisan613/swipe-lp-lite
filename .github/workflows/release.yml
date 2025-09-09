@@ -1,0 +1,29 @@
+name: Build & Release (tag)
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'   # 例: v0.1.0 で発火
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Gutenbergをバンドルしない想定（npm不要）。必要になったら下の2行を有効化。
+      # - uses: actions/setup-node@v4
+      #   with: { node-version: '20' }
+      # - run: npm ci && npm run build
+
+      - name: Create ZIP
+        run: |
+          PLUGIN=swipe-lp-lite
+          zip -r ${PLUGIN}.zip . \
+            -x ".git/*" ".github/*" "node_modules/*" ".wp-env/*" ".DS_Store" \
+               "*.map" "package-lock.json" "yarn.lock" "pnpm-lock.yaml"
+
+      - name: Upload Release Asset
+        uses: softprops/action-gh-release@v2
+        with:
+          files: swipe-lp-lite.zip
