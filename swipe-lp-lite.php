@@ -11,10 +11,23 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'SWIPE_LP_LITE_URL', plugin_dir_url( __FILE__ ) );
-define( 'SWIPE_LP_LITE_PATH', plugin_dir_path( __FILE__ ) );
-define( 'SWIPE_LP_LITE_VER', '0.1.0' );
+// 多重読み込みガード
+if ( defined( 'SWIPE_LP_LITE_BOOTSTRAPPED' ) ) {
+	return;
+}
+define( 'SWIPE_LP_LITE_BOOTSTRAPPED', true );
 
+
+// 定数は defined() でガード
+if ( ! defined( 'SWIPE_LP_LITE_URL' ) ) {
+	define( 'SWIPE_LP_LITE_URL', plugin_dir_url( __FILE__ ) );
+}
+if ( ! defined( 'SWIPE_LP_LITE_PATH' ) ) {
+	define( 'SWIPE_LP_LITE_PATH', plugin_dir_path( __FILE__ ) );
+}
+if ( ! defined( 'SWIPE_LP_LITE_VER' ) ) {
+	define( 'SWIPE_LP_LITE_VER', '0.1.0' );
+}
 /**
  * Front assets（SwiperはCDN利用。必要ならローカル同梱に変更可）
  */
