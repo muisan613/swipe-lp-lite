@@ -9,27 +9,40 @@
       const blockProps = useBlockProps({ className: 'swiper-slide', style: { backgroundColor: bgColor } });
 
       return (
-        <>
-          <InspectorControls>
-            <PanelBody title="背景色">
-              <ColorPalette value={bgColor} onChange={(c)=>setAttributes({ bgColor: c })} />
-            </PanelBody>
-          </InspectorControls>
-          <section {...blockProps}>
-            <RichText tagName="h2" value={title} onChange={(v)=>setAttributes({ title: v })} placeholder="セクションタイトル"/>
-            <RichText tagName="p" value={content} onChange={(v)=>setAttributes({ content: v })} placeholder="本文"/>
-          </section>
-        </>
+        wp.element.createElement(wp.element.Fragment, null, [
+          wp.element.createElement(InspectorControls, null,
+            wp.element.createElement(PanelBody, { title: '背景色' },
+              wp.element.createElement(ColorPalette, {
+                value: bgColor,
+                onChange: (c) => setAttributes({ bgColor: c })
+              })
+            )
+          ),
+          wp.element.createElement('section', blockProps, [
+            wp.element.createElement(RichText, {
+              tagName: 'h2',
+              value: title,
+              onChange: (v) => setAttributes({ title: v }),
+              placeholder: 'セクションタイトル'
+            }),
+            wp.element.createElement(RichText, {
+              tagName: 'p',
+              value: content,
+              onChange: (v) => setAttributes({ content: v }),
+              placeholder: '本文'
+            })
+          ])
+        ])
       );
     },
     save({ attributes }) {
       const { title, content, bgColor } = attributes;
       const blockProps = wp.blockEditor.useBlockProps.save({ className: 'swiper-slide', style: { backgroundColor: bgColor } });
       return (
-        <section {...blockProps}>
-          <RichText.Content tagName="h2" value={title} />
-          <RichText.Content tagName="p" value={content} />
-        </section>
+        wp.element.createElement('section', blockProps, [
+          wp.element.createElement(RichText.Content, { tagName: 'h2', value: title }),
+          wp.element.createElement(RichText.Content, { tagName: 'p', value: content })
+        ])
       );
     },
   });

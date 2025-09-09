@@ -12,21 +12,19 @@
     edit() {
       const props = useBlockProps({ className: 'swiper swipe-lp' });
       return (
-        <div {...props}>
-          <p style={{textAlign:'center',fontStyle:'italic'}}>コンテナ配下にセクションを追加してください（初期テンプレ付き）</p>
-          <InnerBlocks allowedBlocks={['swipe-lp/section']} template={TEMPLATE} templateLock={false} />
-        </div>
+        wp.element.createElement('div', props, [
+          wp.element.createElement('p', { style: {textAlign:'center', fontStyle:'italic'}}, 'コンテナ配下にセクションを追加してください（初期テンプレ付き）'),
+          wp.element.createElement(InnerBlocks, { allowedBlocks: ['swipe-lp/section'], template: TEMPLATE, templateLock: false })
+        ])
       );
     },
     save() {
       const props = useBlockProps.save({ className: 'swiper swipe-lp' });
       return (
-        <div {...props}>
-          <div className="swiper-wrapper">
-            <InnerBlocks.Content />
-          </div>
-          <div className="swiper-pagination"></div>
-        </div>
+        wp.element.createElement('div', props, [
+          wp.element.createElement('div', { className: 'swiper-wrapper' }, wp.element.createElement(InnerBlocks.Content)),
+          wp.element.createElement('div', { className: 'swiper-pagination' })
+        ])
       );
     },
   });
