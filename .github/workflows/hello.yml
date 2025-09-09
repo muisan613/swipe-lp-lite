@@ -1,0 +1,17 @@
+name: Hello World Workflow
+
+on: 
+  push:        # pushされたら動く
+    branches:
+      - main   # mainブランチにpushした時のみ
+
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: チェックアウト
+        uses: actions/checkout@v4
+
+      - name: Hello メッセージ
+        run: echo "🎉 GitHub Actions が動きました！"
+

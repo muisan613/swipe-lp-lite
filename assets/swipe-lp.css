@@ -1,0 +1,17 @@
+/* 100vhのフルスクリーンセクション */
+.swipe-lp, .swipe-lp .swiper-wrapper, .swipe-lp .swiper-slide {
+  width: 100%;
+  height: 100vh;
+}
+.swipe-lp .swiper-slide {
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 40px;
+}
+.swipe-lp .swiper-pagination {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
