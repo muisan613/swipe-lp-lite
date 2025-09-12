@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Swipe LP Lite
  * Description: 縦スワイプのLPをGutenbergブロックで作る最小プラグイン（コンテナ＋セクション）
- * Version: 1.0.0
+ * Version: 1.0.10
  * Author: Your Name
  * Requires at least: 6.0
  * Requires PHP: 8.0

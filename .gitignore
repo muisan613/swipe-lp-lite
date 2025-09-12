@@ -1,4 +1,9 @@
 node_modules/
 .DS_Store
-dist/Buile/
-
+.wp-env/
+dist/
+build/
+*.map
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
