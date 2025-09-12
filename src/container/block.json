@@ -5,6 +5,10 @@
   "category": "layout",
   "icon": "images-alt2",
   "description": "LP全体のラッパー。内部にセクションブロックを追加。",
+  "attributes": {
+    "direction": { "type": "string", "default": "vertical" },
+    "mobileOnly": { "type": "boolean", "default": true }
+  },
   "supports": { "html": false },
   "editorScript": "file:index.js",
   "style": "file:style.css"
