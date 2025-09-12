@@ -11,7 +11,8 @@
 
   function initSwipe(container) {
     if (container.__swiper_instance) return; // 二重初期化防止
-   // const paginationEl = container.querySelector('.swiper-pagination');
+   // const paginationEl = container.querySelector('.swiper-pagination');+    const usePagination = container.dataset.pagination === 'true';
+   const paginationEl = usePagination ? container.querySelector('.swiper-pagination') : null;
 
     // データ属性からオプション（将来拡張）
     const dir = container.dataset.direction || 'vertical';
@@ -34,9 +35,7 @@
       speed: 600,
       longSwipes: true,
       longSwipesRatio: 0.2,
-      pagination: paginationEl
-        ? { el: paginationEl, clickable: true }
-        : undefined,
+      ...(usePagination && paginationEl ? { pagination: { el: paginationEl, clickable: true } } : {}),
       // スクロールのはみ出しを抑え、ページ全体スクロールを防止
       touchStartPreventDefault: true,
       passiveListeners: true,
