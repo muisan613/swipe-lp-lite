@@ -11,7 +11,7 @@
 
   function initSwipe(container) {
     if (container.__swiper_instance) return; // 二重初期化防止
-    const paginationEl = container.querySelector('.swiper-pagination');
+   // const paginationEl = container.querySelector('.swiper-pagination');
 
     // データ属性からオプション（将来拡張）
     const dir = container.dataset.direction || 'vertical';
